@@ -95,6 +95,7 @@ function App() {
       }
       setAnswers(selectedAnswer)
       toggleAnswers()
+      setcheckQuestions(false)
   }
   
 
@@ -140,7 +141,7 @@ function App() {
     <>
     <img src={blob2} alt="" className="blob-bottom-left " />
     <img src={blob1} alt="" className="blob-top-right" />
-    {!checkQuestions && <Welcome onClick={toggleNewGame}/>}
+    {!checkQuestions && !seeAnswers && <Welcome onClick={toggleNewGame}/>}
     {checkQuestions &&   data && Array.isArray(data) && data.length > 0 &&
     <form onSubmit={handleAnswers} >
     {<>{
