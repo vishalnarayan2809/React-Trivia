@@ -1,4 +1,5 @@
 import {decode} from 'html-entities';
+import clsx from 'clsx';
 
 export default function Answers(props){
         const selected_answer = props.selectedAnswer[`question_${props.questionId}`]
@@ -11,18 +12,13 @@ export default function Answers(props){
                     {props.options.map((option,index) => {
                         const isCorrect = option === props.correctAnswer;
                         const isSelected = option === selected_answer
-                        let optionClass = '';
-                        if(isCorrect && isSelected){
-                            optionClass = 'right'
-                        }
-                        else if(!isCorrect && isSelected){
-                            optionClass = 'wrong'
-                        }
-                        else if(isCorrect && !isSelected){
-                            optionClass = 'right'
-                        }
+                        
+                       const className = clsx('',{
+                            right: isCorrect ,
+                            wrong:!isCorrect && isSelected
+                        })
 
-                       return <label key={index} className={optionClass}>{decode(option)}
+                       return <label key={index} className={className}>{decode(option)}
                         <input 
                         type='radio' 
                         name={`question_${props.questionId}`} 

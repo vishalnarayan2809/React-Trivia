@@ -100,7 +100,7 @@ function App() {
   
 
   function renderQuiz(){
-           if (!data || !Array.isArray(data) || data.length === 0) return null;
+    if (!data || !Array.isArray(data) || data.length === 0) return null;
     return data.map((item,index) =>{
       return <Quiz 
       key={item.id}
